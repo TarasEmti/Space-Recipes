@@ -20,6 +20,8 @@
 		76657F32205697BA004C0377 /* UIView Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76657F31205697BA004C0377 /* UIView Nib.swift */; };
 		76657F34205698F0004C0377 /* ReuseIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76657F33205698F0004C0377 /* ReuseIdentifiers.swift */; };
 		76657F362056A121004C0377 /* String Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76657F352056A121004C0377 /* String Localized.swift */; };
+		76657F3B2056AF40004C0377 /* SRRecipeInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76657F392056AF40004C0377 /* SRRecipeInfoVC.swift */; };
+		76657F3C2056AF40004C0377 /* SRRecipeInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76657F3A2056AF40004C0377 /* SRRecipeInfoVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		76657F31205697BA004C0377 /* UIView Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView Nib.swift"; sourceTree = "<group>"; };
 		76657F33205698F0004C0377 /* ReuseIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiers.swift; sourceTree = "<group>"; };
 		76657F352056A121004C0377 /* String Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Localized.swift"; sourceTree = "<group>"; };
+		76657F392056AF40004C0377 /* SRRecipeInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRRecipeInfoVC.swift; sourceTree = "<group>"; };
+		76657F3A2056AF40004C0377 /* SRRecipeInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SRRecipeInfoVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				76657F2120566296004C0377 /* Recipes Table */,
+				76657F3D2056AF46004C0377 /* Recipe Info */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -142,6 +147,15 @@
 				76657F352056A121004C0377 /* String Localized.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		76657F3D2056AF46004C0377 /* Recipe Info */ = {
+			isa = PBXGroup;
+			children = (
+				76657F392056AF40004C0377 /* SRRecipeInfoVC.swift */,
+				76657F3A2056AF40004C0377 /* SRRecipeInfoVC.xib */,
+			);
+			path = "Recipe Info";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +222,7 @@
 				76657F12205661F2004C0377 /* Assets.xcassets in Resources */,
 				76657F2E20567CC0004C0377 /* SRRecipeCell.xib in Resources */,
 				76657F1F20566282004C0377 /* SRRecipesTableVC.xib in Resources */,
+				76657F3C2056AF40004C0377 /* SRRecipeInfoVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76657F362056A121004C0377 /* String Localized.swift in Sources */,
+				76657F3B2056AF40004C0377 /* SRRecipeInfoVC.swift in Sources */,
 				76657F1E20566282004C0377 /* SRRecipesTableVC.swift in Sources */,
 				76657F2520566E7E004C0377 /* SRRecipe.swift in Sources */,
 				76657F292056728E004C0377 /* SRLib.swift in Sources */,

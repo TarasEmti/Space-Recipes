@@ -15,6 +15,7 @@ class SRLib {
 	static let recipeUrl = "https://test.space-o.ru/recipes.json"
 	
 	// Fonts
+	static let hintFont = UIFont.systemFont(ofSize: 10)
 	static let commonFont = UIFont.systemFont(ofSize: 12)
 	static let headerFont = UIFont.systemFont(ofSize: 15)
 	

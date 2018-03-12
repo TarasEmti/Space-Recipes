@@ -22,7 +22,7 @@ struct SRRecipeJSON: Decodable {
 
 struct SRRecipe {
 	var uuid: String
-	var lastUpdated: Int
+	var lastUpdated: Date
 	var images: [String]
 	var name: String
 	var details: String
@@ -51,10 +51,14 @@ extension SRRecipe: Decodable {
 		uuid = try container.decode(String.self, forKey: .uuid)
 		name = try container.decode(String.self, forKey: .name)
 		images = try container.decode([String].self, forKey: .images)
-		lastUpdated = try container.decode(Int.self, forKey: .lastUpdated)
+		cookingInstructions = try container.decode(String.self, forKey: .cookingInstructions)
+		
+		let timeInterval = try container.decode(Int.self, forKey: .lastUpdated)
+		lastUpdated = Date(timeIntervalSince1970: TimeInterval(timeInterval))
+		
 		// We assume that details is not a required parameter (because 8825cde8-630a-4027-9b9c-38b34bd4426b recipe don't have it)
 		details = (try? container.decode(String.self, forKey: .details)) ?? ""
-		cookingInstructions = try container.decode(String.self, forKey: .cookingInstructions)
+		
 		let difficulty = try container.decode(Int.self, forKey: .difficultyLevel)
 		difficultyLevel = RecipeDifficulty(rawValue: difficulty) ?? .easy
 	}

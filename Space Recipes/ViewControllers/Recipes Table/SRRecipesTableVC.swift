@@ -154,6 +154,19 @@ class SRRecipesTableVC: UITableViewController {
 		
         return cell
     }
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let recipe: SRRecipe
+		if isFiltering() {
+			recipe = filteredRecipes[indexPath.row]
+		} else {
+			recipe = recipes[indexPath.row]
+		}
+		let recipeView = SRRecipeInfoVC()
+		recipeView.recipe = recipe
+		
+		navigationController?.pushViewController(recipeView, animated: true)
+	}
 }
 
 // MARK: - Extensions
