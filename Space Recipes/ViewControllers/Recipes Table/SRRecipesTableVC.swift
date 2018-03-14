@@ -50,7 +50,7 @@ class SRRecipesTableVC: UITableViewController {
 	
 	private func setupView() {
 		self.title = "Choose Recipe".localized
-		self.clearsSelectionOnViewWillAppear = false
+		self.clearsSelectionOnViewWillAppear = true
 		reloadRecipes()
 	}
 	
@@ -59,6 +59,9 @@ class SRRecipesTableVC: UITableViewController {
 		tableView.refreshControl = UIRefreshControl()
 		tableView.refreshControl?.addTarget(self, action: #selector(reloadRecipes), for: .valueChanged)
 		tableView.keyboardDismissMode = .onDrag
+		// Calculating rowHeight which is depend on screen height
+		let rowHeight = self.view.bounds.height / 8
+		tableView.rowHeight = rowHeight
 	}
 	
 	private func setupSearchController() {
@@ -109,21 +112,51 @@ class SRRecipesTableVC: UITableViewController {
 	
 	// MARK: - Actions
 	@objc func reloadRecipes() {
+		
+		// Enshure we are not in a search state
+		guard !isFiltering() else {
+			tableView.refreshControl?.endRefreshing()
+			return
+		}
 		recipeLoader.loadRecipes { [weak self] (recipes, error) in
 			
 			guard let strongSelf = self else {
 				return
 			}
-			DispatchQueue.main.async {
-				if error != nil {
-					print(error.debugDescription)
-				} else if recipes != nil {
-					strongSelf.recipes = recipes!
-				}
-				if strongSelf.tableView.refreshControl!.isRefreshing {
-					strongSelf.tableView.refreshControl?.endRefreshing()
+			if error != nil {
+				// TODO: Show error in HUD
+				print(error.debugDescription)
+			} else if recipes != nil {
+				DispatchQueue.main.async {
+					strongSelf.setRecipes(recipes!)
 				}
 			}
+			
+		}
+	}
+	
+	private func setRecipes(_ recipes: [SRRecipe]) {
+		self.recipes = recipes
+		for i in 0 ..< recipes.count {
+			if let iconString = recipes[i].imagesStrings.first,
+				let iconURL = URL(string: iconString) {
+				ImageLoader.loadImage(fromUrl: iconURL, completion: { [weak self] (image, error) in
+					
+					guard let strongSelf = self else {
+						return
+					}
+					if error != nil {
+						// TODO: Show error in HUD
+						print(error)
+					} else {
+						strongSelf.recipes[i].images[0] = image
+						strongSelf.tableView.reloadRows(at: [IndexPath(row: i, section: 0)], with: .none)
+					}
+				})
+			}
+		}
+		if let refreshControl = tableView.refreshControl, refreshControl.isRefreshing {
+			tableView.refreshControl?.endRefreshing()
 		}
 	}
 

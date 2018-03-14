@@ -22,7 +22,7 @@ class SRRecipeCell: UITableViewCell {
     }
 
 	func fillWithObject(recipe: SRRecipe) {
-		recipeImageView.image = #imageLiteral(resourceName: "icon_placeholder")
+		recipeImageView.image = recipe.images.first ?? #imageLiteral(resourceName: "icon_placeholder")
 		recipeName.text = recipe.name
 		recipeDetails.text = recipe.details
 	}

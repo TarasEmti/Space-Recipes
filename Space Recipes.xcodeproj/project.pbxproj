@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76302CC92059316700CE0152 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76302CC82059316700CE0152 /* ImageLoader.swift */; };
 		76657F0B205661F2004C0377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76657F0A205661F2004C0377 /* AppDelegate.swift */; };
 		76657F12205661F2004C0377 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76657F11205661F2004C0377 /* Assets.xcassets */; };
 		76657F15205661F2004C0377 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76657F13205661F2004C0377 /* LaunchScreen.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		76302CC82059316700CE0152 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		76657F07205661F2004C0377 /* Space Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76657F0A205661F2004C0377 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76657F11205661F2004C0377 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				76657F2620567131004C0377 /* SRRecipeLoader.swift */,
+				76302CC82059316700CE0152 /* ImageLoader.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				76657F1E20566282004C0377 /* SRRecipesTableVC.swift in Sources */,
 				76657F2520566E7E004C0377 /* SRRecipe.swift in Sources */,
 				76657F292056728E004C0377 /* SRLib.swift in Sources */,
+				76302CC92059316700CE0152 /* ImageLoader.swift in Sources */,
 				76657F34205698F0004C0377 /* ReuseIdentifiers.swift in Sources */,
 				76657F0B205661F2004C0377 /* AppDelegate.swift in Sources */,
 				76657F32205697BA004C0377 /* UIView Nib.swift in Sources */,

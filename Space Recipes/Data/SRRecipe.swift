@@ -6,7 +6,8 @@
 //  Copyright © 2018 Taras Minin. All rights reserved.
 //
 
-import Foundation
+
+import UIKit
 
 enum RecipeDifficulty: Int {
 	case easy = 1
@@ -23,15 +24,12 @@ struct SRRecipeJSON: Decodable {
 struct SRRecipe {
 	var uuid: String
 	var lastUpdated: Date
-	var images: [String]
+	var imagesStrings: [String]
+	var images: [UIImage?]
 	var name: String
 	var details: String
 	var cookingInstructions: String
 	var difficultyLevel: RecipeDifficulty
-	
-	var icon: String {
-		return images.first ?? ""
-	}
 }
 
 extension SRRecipe: Decodable {
@@ -50,7 +48,8 @@ extension SRRecipe: Decodable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		uuid = try container.decode(String.self, forKey: .uuid)
 		name = try container.decode(String.self, forKey: .name)
-		images = try container.decode([String].self, forKey: .images)
+		imagesStrings = try container.decode([String].self, forKey: .images)
+		images = Array.init(repeating: nil, count: imagesStrings.count)
 		cookingInstructions = try container.decode(String.self, forKey: .cookingInstructions)
 		
 		let timeInterval = try container.decode(Int.self, forKey: .lastUpdated)

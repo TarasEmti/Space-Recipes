@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,13 +27,13 @@
                             <constraint firstAttribute="width" secondItem="Q9G-rs-h6d" secondAttribute="height" multiplier="1:1" id="6eB-Jm-y9j"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UR-xO-czK">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Recipe name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UR-xO-czK">
                         <rect key="frame" x="144" y="11" width="376" height="27.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Ey-0mi">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe details" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Ey-0mi">
                         <rect key="frame" x="144" y="46.5" width="376" height="72.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -48,7 +47,6 @@
                     <constraint firstAttribute="bottomMargin" secondItem="Q9G-rs-h6d" secondAttribute="bottom" id="dI7-Jt-SzM"/>
                     <constraint firstItem="Q9G-rs-h6d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="eV7-Gn-zhp"/>
                     <constraint firstAttribute="trailingMargin" secondItem="1UR-xO-czK" secondAttribute="trailing" id="fOD-HA-Ntg"/>
-                    <constraint firstItem="Q9G-rs-h6d" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:5" id="iv7-t6-Zny"/>
                     <constraint firstAttribute="bottomMargin" secondItem="b91-Ey-0mi" secondAttribute="bottom" id="kLx-EX-pmt"/>
                     <constraint firstItem="Q9G-rs-h6d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="rbL-fo-pDy"/>
                     <constraint firstItem="1UR-xO-czK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="vPn-c1-6Kg"/>

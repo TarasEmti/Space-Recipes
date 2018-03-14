@@ -33,8 +33,38 @@ class SRRecipeInfoVC: UIViewController {
 		recipeName.font = SRLib.headerFont
 		recipeDetails.font = SRLib.commonFont
 		recipeDifficulty.font = SRLib.hintFont
+		recipeDifficulty.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+		recipeDifficulty.layer.cornerRadius = 6
+		recipeDifficulty.clipsToBounds = true
 		recipeInstruction.font = SRLib.commonFont
 		recipeInstruction.isEditable = false
+		
+		guard let recipe = recipe else {
+			return
+		}
+		self.recipeImagesScrollView.contentSize.width = self.recipeImagesScrollView.bounds.width * CGFloat(recipe.images.count)
+		for i in 0 ..< recipe.images.count {
+			let imageView = UIImageView()
+			imageView.contentMode = .scaleAspectFill
+			let xOffset = CGFloat(i) * self.view.bounds.width
+			imageView.frame = CGRect(x: xOffset,
+									 y: 0,
+									 width: self.recipeImagesScrollView.frame.width,
+									 height: self.recipeImagesScrollView.frame.height)
+			self.recipeImagesScrollView.addSubview(imageView)
+			if recipe.images[i] == nil, let imageURL = URL(string: recipe.imagesStrings[i]) {
+				
+				imageView.image = #imageLiteral(resourceName: "icon_placeholder")
+				
+				ImageLoader.loadImage(fromUrl: imageURL, completion: { (image, _) in
+					if image != nil {
+						imageView.image = image
+					}
+				})
+			} else {
+				imageView.image = recipe.images[i]
+			}
+		}
 	}
 	
 	// Kind of ViewModel module here
