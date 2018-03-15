@@ -147,7 +147,6 @@ class SRRecipesTableVC: UITableViewController {
 					}
 					if error != nil {
 						// TODO: Show error in HUD
-						print(error)
 					} else {
 						strongSelf.recipes[i].images[0] = image
 						strongSelf.tableView.reloadRows(at: [IndexPath(row: i, section: 0)], with: .none)

@@ -49,21 +49,23 @@ final class SRRecipeLoader {
 		}
 		let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
 			
+			var recipes: [SRRecipe]?
+			var taskError: Error?
+			
 			guard let data = data, error == nil else {
-				let error = error ?? SRParserError(message: "No data response".localized)
-				completion(nil, error)
+				let taskError = error ?? SRParserError(message: "No data response".localized)
+				completion(recipes, taskError)
 				return
 			}
 			do {
 				let decoder = JSONDecoder()
 				let recipeJSON = try decoder.decode(SRRecipeJSON.self, from: data)
-				completion(recipeJSON.recipes, nil)
+				recipes = recipeJSON.recipes
 			} catch {
 				let parserError = SRParserError(message: "Bad data format".localized)
-				print(error.localizedDescription)
-				completion(nil, parserError)
-				return
+				taskError = parserError
 			}
+			completion(recipes, taskError)
 		}
 		task.resume()
 	}

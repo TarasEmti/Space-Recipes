@@ -15,7 +15,7 @@ class SRRecipeInfoVC: UIViewController {
 	@IBOutlet weak var recipeDetails: UILabel!
 	@IBOutlet weak var recipeInstruction: UITextView!
 	@IBOutlet weak var recipeDifficulty: UILabel!
-	@IBOutlet weak var imagesPageControl: UIPageControl!
+	@IBOutlet weak var pageCounter: UILabel!
 	
 	var recipe: SRRecipe?
 
@@ -78,8 +78,6 @@ class SRRecipeInfoVC: UIViewController {
 		for i in 1...5 {
 			if i <= difficultyInt {
 				difficultyString += "⭐️"
-			} else {
-				difficultyString += " ●"
 			}
 		}
 		recipeDifficulty.text = difficultyString
