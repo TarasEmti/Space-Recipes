@@ -8,6 +8,20 @@
 
 import UIKit
 
+fileprivate enum SortType {
+	case date
+	case name
+	
+	var title: String {
+		switch self {
+		case .date:
+			return "Date".localized
+		case .name:
+			return "Name".localized
+		}
+	}
+}
+
 fileprivate enum RecipeSearchFilters: String {
 	case name
 	case details
@@ -38,6 +52,7 @@ class SRRecipesTableVC: UITableViewController {
 	private var filteredRecipes: [SRRecipe]!
 	private let recipeLoader = SRRecipeLoader()
 	private let searchController = UISearchController(searchResultsController: nil)
+	private let sortTypes = [SortType.date, SortType.name]
 	
 	// MARK: - Lifecycle
     override func viewDidLoad() {
@@ -46,6 +61,7 @@ class SRRecipesTableVC: UITableViewController {
 		setupView()
 		setupTableView()
 		setupSearchController()
+		setupSegmentedControl()
     }
 	
 	private func setupView() {
@@ -79,6 +95,25 @@ class SRRecipesTableVC: UITableViewController {
 			tableView.tableHeaderView = searchController.searchBar
 		}
 		definesPresentationContext = true
+	}
+	
+	private func setupSegmentedControl() {
+		let sortTypesTitles = self.sortTypes.map{ $0.title }
+		let segControl = UISegmentedControl(items: sortTypesTitles)
+		segControl.addTarget(self, action: #selector(sortRecipes(sender:)), for: .valueChanged)
+		navigationItem.titleView = segControl
+		segControl.selectedSegmentIndex = 0
+	}
+	
+	@objc private func sortRecipes(sender: UISegmentedControl) {
+		let sortType = self.sortTypes[sender.selectedSegmentIndex]
+		
+		switch  sortType {
+		case .date:
+			self.recipes = self.recipes.sorted(by: { $0.lastUpdated > $1.lastUpdated })
+		case .name:
+			self.recipes = self.recipes.sorted(by: { $0.name < $1.name })
+		}
 	}
 	
 	// MARK: - Search Controller
